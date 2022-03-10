@@ -18,6 +18,8 @@ prorata_startdate = st.date_input("Pro Rata start date", pr_sd)
 
 premium_rate = st.number_input("Premium rate (dollars)", 0.0)
 
+remaining_installments = st.number_input("Remaining installments:", 1)
+
 st.markdown("------")
 st.text("Summary:")
 
@@ -33,8 +35,7 @@ prorata_dt = premium_enddate - prorata_startdate
 prorata_rate = daily_rate * prorata_dt.days
 st.write("The Pro Rata term rate is:", np.round(prorata_rate, 2))
 
-prorata_months = 12 * (premium_enddate.year - prorata_startdate.year) + (premium_enddate.month - prorata_startdate.month)
-st.write("Pro Rata term period (months):", prorata_months)
+st.write("Remaining policy installments:", remaining_installments)
 
-prorata_monthly_payment = np.round(prorata_rate / prorata_months, 2)
-st.write("Estimated monthly payment over the Pro Rata period:", prorata_monthly_payment)
+installment_increase = np.round(prorata_rate / remaining_installments, 2)
+st.write("Estimated Pro Rata increase:", installment_increase)

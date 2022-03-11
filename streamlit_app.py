@@ -23,7 +23,7 @@ prorata_startdate = col1b.date_input("Pro Rata start date", pr_sd)
 remaining_installments = col2b.number_input("Remaining installments:", 1)
 
 st.markdown("------")
-st.text("Summary:")
+st.markdown("## Summary:")
 
 st.write("The premium starts on:", premium_startdate)
 st.write("The premium ends on:", premium_enddate)
@@ -40,4 +40,5 @@ st.write("The Pro Rata term rate is:", np.round(prorata_rate, 2))
 st.write("Remaining policy installments:", remaining_installments)
 
 installment_increase = np.round(prorata_rate / remaining_installments, 2)
-st.write("Estimated Pro Rata increase:", installment_increase)
+ii_str = "##### Estimated Pro Rata increase: " + str(installment_increase)
+st.markdown(ii_str)

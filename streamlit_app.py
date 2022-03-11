@@ -4,21 +4,23 @@ import numpy as np
 
 st.title("Insurance Pro Rata Calculator")
 
-premium_startdate = st.date_input("Premium start date", datetime.today().date())
+col1, col2, col3 = st.columns(3)
+premium_startdate = col1.date_input("Premium start date", datetime.today().date())
 
 
 sd = datetime.today().date()
 ed = date(sd.year + 1, sd.month, sd.day)
 
-premium_enddate = st.date_input("Premium end date", ed)
+premium_enddate = col2.date_input("Premium end date", ed)
 
+premium_rate = col3.number_input("Premium rate (dollars)", 0.0)
 
+col1b, col2b = st.columns(2)
 pr_sd = date(sd.year, sd.month + 1, sd.day)
-prorata_startdate = st.date_input("Pro Rata start date", pr_sd)
+prorata_startdate = col1b.date_input("Pro Rata start date", pr_sd)
 
-premium_rate = st.number_input("Premium rate (dollars)", 0.0)
 
-remaining_installments = st.number_input("Remaining installments:", 1)
+remaining_installments = col2b.number_input("Remaining installments:", 1)
 
 st.markdown("------")
 st.text("Summary:")
